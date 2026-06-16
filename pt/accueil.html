@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariana & Robin — Início</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+img { max-width: 100%; height: auto; object-fit: contain; display: block; }
+:root{ --tc:#C66B49; --am:#E8A856; --cr:#f5ede3; --dk:#3a2e28; --md:#7a6358; }
+
+body {
+  font-family:'Jost',sans-serif;
+  color:var(--dk);
+  overflow-x:hidden;
+  background-color: #f5ede3;
+}
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image: url("../ASSET/FOND SITE HTML.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:.8rem 2.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(245,237,227,.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(198,107,73,.12);
+}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--tc);}
+.btn-lang{
+  background:none;border:1px solid rgba(198,107,73,.35);border-radius:30px;
+  padding:.26rem .9rem;font-size:.68rem;letter-spacing:.1em;
+  color:var(--md);cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s; text-decoration: none;
+}
+.btn-lang:hover{background:var(--tc);color:white;border-color:var(--tc);}
+
+/* ── CONTENT ── */
+.main-content { padding-top: 90px; min-height: 100vh; }
+.home-inner{ width:100%; max-width:100vw; margin:0 auto; padding:2.5rem 2rem 5rem; display:flex; flex-direction:column; align-items:center; gap:3rem; }
+.home-banner{ width:min(450px,65vw); }
+
+/* Countdown */
+.cd-wrap{ display:flex; align-items:flex-start; justify-content:center; width:100%; padding:0 2rem; box-sizing:border-box; }
+.cd-col{display:flex;flex-direction:column;align-items:center;min-width:clamp(60px,10vw,100px);}
+.cd-n{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,5rem);font-weight:300;color:var(--tc);line-height:1;}
+.cd-l{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--md);margin-top:.3rem;}
+.cd-sep{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4rem);color:rgba(198,107,73,.28);padding:0 .15rem;line-height:1.1;}
+
+/* Programme & Timeline */
+.prog-wrap{ width:100vw; margin-left:calc(-50vw + 50%); padding:0 2rem; box-sizing:border-box; }
+.prog-ey{ font-size:1rem; letter-spacing:.22em; text-transform:uppercase; color:var(--am); text-align:center; margin-bottom:.8rem; }
+.prog-h{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,4vw,2.5rem); font-weight:300; text-align:center; }
+.prog-rule{ width:48px; height:2px; background:var(--tc); margin:1rem auto 2.5rem; border-radius:2px; }
+.tl{ position:relative; width:100%; display:flex; flex-direction:column; }
+.tl::before{ content:''; position:absolute; left:50%; top:4px; bottom:4pc; width:1.5px; background:rgba(198,107,73,.16); transform:translateX(-50%); }
+.tl-row{ display:grid; grid-template-columns:1fr 18px 1fr; align-items:start; padding:.7rem 4rem; opacity:0; transform:translateY(10px); transition:opacity .5s ease,transform .5s ease; width:100%; }
+.tl-row.vis{ opacity:1; transform:translateY(0); }
+.tl-l{ text-align:right; padding-right:1.5rem; }
+.tl-r{ text-align:left; padding-left:1.5rem; }
+.tl-dw{ display:flex; justify-content:center; padding-top:3px; }
+.tl-d{ width:10px; height:10px; border-radius:50%; background:var(--cr); border:2px solid var(--tc); flex-shrink:0; }
+.tl-time{ font-size:.9rem; letter-spacing:.12em; color:var(--am); text-transform:uppercase; margin-bottom:.2rem; }
+.tl-ev{ font-family:'Cormorant Garamond',serif; font-size:1.45rem; color:var(--dk); }
+.tl-ds{ font-size:1.1rem; color:var(--md); line-height:1.4; margin-top:.12rem; }
+
+/* Cards Navigation */
+.cards-wrap{ width:100%; padding:0 2rem; box-sizing:border-box; }
+.cards-ey{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--md);text-align:center;margin-bottom:2.5rem;}
+.cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; max-width:900px; margin:0 auto; justify-items: center; align-items: center; }
+.card{display:flex;flex-direction:column;align-items:center;gap:1rem;cursor:pointer;text-decoration:none; text-align: center;}
+.card-fig{ width:100%;aspect-ratio:1/1; display:flex;align-items:center;justify-content:center; background:transparent; padding:.8rem; transition:transform .35s ease; position:relative; }
+.card:hover .card-fig{transform:translateY(-10px);}
+.card-fig img{ width:100%;height:100%;object-fit:contain;display:block; filter:drop-shadow(0 6px 20px rgba(58,46,40,.15)); transition:filter .35s; }
+.card:hover .card-fig img{filter:drop-shadow(0 12px 30px rgba(198,107,73,.25));}
+.card-lbl{ font-family:'Cormorant Garamond',serif;font-style:italic; font-size:1.05rem; color:var(--md); border-bottom:1px solid rgba(198,107,73,.25);padding-bottom:4px; transition:color .2s,border-color .2s;text-align:center; }
+.card:hover .card-lbl{color:var(--tc);border-color:var(--tc);}
+
+/* Footer */
+footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:center; padding:2.5rem 2rem; font-size:.73rem; letter-spacing:.04em; margin-top: 4rem; }
+.fn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cr);margin-bottom:.35rem;}
+
+/* ── MODIFS MOBILE INTÉGRÉES ── */
+@media(max-width:700px){
+  .nav-brand { display: none; }
+  nav { padding: .6rem .4rem; justify-content: center; }
+  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
+  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
+  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
+
+  .prog-wrap { width: 100%; margin-left: 0; padding: 0 0.5rem; box-sizing: border-box; }
+  .tl::before { left: 50%; transform: translateX(-50%); }
+  .tl-row { display: grid; grid-template-columns: 1fr 18px 1fr; align-items: start; padding: 1rem 0; width: 100%; }
+  .tl-dw { display: flex; justify-content: center; padding-top: 3px; }
+  .tl-l, .tl-r { display: block !important; width: 100%; box-sizing: border-box; }
+  .tl-l { text-align: right; padding-right: 0.6rem; }
+  .tl-r { text-align: left; padding-left: 0.6rem; }
+  
+  .tl-time { font-size: 0.75rem; margin-bottom: 0.1rem; }
+  .tl-ev { font-size: 1.05rem; line-height: 1.1; }
+  .tl-ds { font-size: 0.8rem; line-height: 1.3; margin-top: 0.1rem; }
+
+  .cards-grid { grid-template-columns: 1fr; max-width: 180px; margin: 0 auto; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Mariana &amp; Robin</div>
+  <ul class="nav-links">
+    <li><a href="accueil.html">Início</a></li>
+    <li><a href="hebergement.html">Hospedagem</a></li>
+    <li><a href="transport.html">Transporte</a></li>
+    <li><a href="voyage.html">Lua de mel</a></li>
+  </ul>
+  <a class="btn-lang" href="../fr/accueil.html">🇫🇷 FR</a>
+</nav>
+
+<div class="main-content">
+  <div class="home-inner">
+    <div class="home-banner">
+      <img src="../ASSET/LOGO_MARIAGE_SANSDATE.png" alt="Mariana &amp; Robin">
+    </div>
+
+    <div class="cd-wrap">
+      <div class="cd-col"><span class="cd-n" id="cd-d">—</span><span class="cd-l">dias</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-col"><span class="cd-n" id="cd-h">—</span><span class="cd-l">horas</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-col"><span class="cd-n" id="cd-m">—</span><span class="cd-l">min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-col"><span class="cd-n" id="cd-s">—</span><span class="cd-l">sec</span></div>
+    </div>
+
+    <div class="prog-wrap">
+      <div class="prog-ey">Sábado 15 de maio de 2027</div>
+      <h2 class="prog-h">Programa do dia</h2>
+      <div class="prog-rule"></div>
+      
+      <div class="tl">
+        <div class="tl-row"><div class="tl-l"><div class="tl-time">11h00</div><div class="tl-ev">Recepção</div><div class="tl-ds">Chegada ao domaine</div></div><div class="tl-dw"><div class="tl-d"></div></div><div class="tl-r"></div></div>
+        <div class="tl-row"><div class="tl-l"></div><div class="tl-dw"><div class="tl-d"></div></div><div class="tl-r"><div class="tl-time">12h00</div><div class="tl-ev">Cerimônia</div><div class="tl-ds">Nos jardins</div></div></div>
+        <div class="tl-row"><div class="tl-l"><div class="tl-time">13h30</div><div class="tl-ev">Coquetel</div><div class="tl-ds">Coquetel &amp; fotos</div></div><div class="tl-dw"><div class="tl-d"></div></div><div class="tl-r"></div></div>
+        <div class="tl-row"><div class="tl-l"></div><div class="tl-dw"><div class="tl-d"></div></div><div class="tl-r"><div class="tl-time">19h30</div><div class="tl-ev">Jantar</div><div class="tl-ds">Jantar no salão</div></div></div>
+        <div class="tl-row"><div class="tl-l"><div class="tl-time">22h00</div><div class="tl-ev">Festa &amp; dança</div><div class="tl-ds">A noite é de vocês !</div></div><div class="tl-dw"><div class="tl-d"></div></div><div class="tl-r"></div></div>
+      </div>
+
+      <div class="cards-wrap">
+        <div class="cards-ey">Explorar</div>
+        <div class="cards-grid">
+          <a class="card" href="hebergement.html">
+            <div class="card-fig"><img src="../ASSET/illustrastion_hebergement_PT.png" alt="Hospedagem"></div>
+            <span class="card-lbl">Encontrar hospedagem</span>
+          </a>
+          <a class="card" href="transport.html">
+            <div class="card-fig"><img src="../ASSET/illustration_infos_PT.png" alt="Transporte"></div>
+            <span class="card-lbl">Todas as informações</span>
+          </a>
+          <a class="card" href="voyage.html">
+            <div class="card-fig"><img src="../ASSET/illustration_noces_PT.png" alt="Lua de mel"></div>
+            <span class="card-lbl">Contribuir com a vaquinha</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fn">Mariana &amp; Robin</div>
+  <p>Sábado 15 de Maio de 2027 · Domaine de Montmanoir, Montlignon</p>
+  <p style="margin-top:.4rem;opacity:.3;font-size:.66rem;">com ♥</p>
+</footer>
+<script type="module" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs"></script>
+<script type="module">
+  var myLandbot = new Landbot.Livechat({
+    configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3424651-EHSQTFGAZJCVYO7L/index.json',
+  });
+</script>
+<script>
+function tickCd(){
+  var t=new Date('2027-05-15T12:00:00'),n=new Date(),diff=t-n; if(diff<=0)return;
+  var d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
+  document.getElementById('cd-d').textContent=d;
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+tickCd(); setInterval(tickCd,1000);
+
+function initTl(){
+  var obs=new IntersectionObserver(function(entries){ entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}}); },{threshold:.25});
+  document.querySelectorAll('.tl-row').forEach(function(el,i){el.style.transitionDelay=(i*.1)+'s';obs.observe(el);});
+}
+initTl();
+
+</script>
+</body>
+</html>

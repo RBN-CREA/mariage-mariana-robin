@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariana & Robin — Voyage de Noces</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+img { max-width: 100%; height: auto; object-fit: contain; display: block; }
+:root{ --tc:#C66B49; --am:#E8A856; --cr:#f5ede3; --dk:#3a2e28; --md:#7a6358; }
+
+body {
+  font-family:'Jost',sans-serif;
+  color:var(--dk);
+  overflow-x:hidden;
+  background-color: #f5ede3;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:.8rem 2.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(245,237,227,.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(198,107,73,.12);
+}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--tc);}
+.btn-lang{
+  background:none;border:1px solid rgba(198,107,73,.35);border-radius:30px;
+  padding:.26rem .9rem;font-size:.68rem;letter-spacing:.1em;
+  color:var(--md);cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s; text-decoration: none;
+}
+.btn-lang:hover{background:var(--tc);color:white;border-color:var(--tc);}
+
+/* ── CONTENT DESIGN SAKURA ── */
+#pg-voyage {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  padding-top: 90px;
+  min-height: 100vh;
+}
+
+/* Fond sakura fixe propre à cette page */
+#pg-voyage::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../ASSET/FOND SITE SAKURA.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+}
+
+.inner-hero{ display:flex; justify-content:center; padding:0 2rem; width:min(250px,40vw); margin:0 auto 1.5rem; position: relative; z-index: 2; }
+.inner-hero img{ width:100%; display:block; filter:drop-shadow(0 8px 30px rgba(58,46,40,.2)); }
+
+.voyage-inner { max-width: 820px; margin: 0 auto; padding: .5rem 2rem 5rem; text-align: center; }
+.ey{ font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--am); display:block; margin-bottom:.5rem; text-align:center; }
+.sec-h{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,3vw,2.2rem); font-weight:300; margin-bottom:.8rem; text-align:center; }
+.rule{ width:36px; height:1.5px; background:var(--tc); border-radius:2px; margin-bottom:2.5rem; margin-left:auto; margin-right:auto; }
+
+/* Encart de texte */
+.voyage-text-box {
+  position: relative;
+  z-index: 20;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  text-align: center;
+  background: rgba(245, 237, 227, .82);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(198, 107, 73, .15);
+  border-radius: 20px;
+}
+.voyage-text-box p { margin-bottom: 1rem; font-size: .95rem; line-height: 1.8; color: var(--md); text-align: center; }
+.voyage-text-box p:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--dk); }
+
+/* Bouton Cagnotte */
+.btn-cag { display: inline-flex; align-items: center; gap: .5rem; padding: .72rem 1.6rem; font-family: 'Jost', sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--tc); background: white; border: 1.5px solid var(--tc); border-radius: 40px; cursor: pointer; transition: all .2s; margin-top: 1rem; }
+.btn-cag:hover { background: var(--tc); color: white; }
+
+/* ── ANIMATION DES PÉTALES (SAKURA) ── */
+.petal {
+  position: absolute;
+  top: -40px;
+  z-index: 1;
+  cursor: default;
+  animation: petalFall linear forwards;
+  transition: left 0.6s ease-out, opacity 1.5s ease-out;
+}
+@keyframes petalFall {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10%  { transform: translate(10px, calc(var(--fall-distance) * 0.1)) rotate(45deg); opacity: .9; }
+  30%  { transform: translate(-15px, calc(var(--fall-distance) * 0.3)) rotate(130deg); opacity: .9; }
+  50%  { transform: translate(15px, calc(var(--fall-distance) * 0.5)) rotate(220deg); opacity: .9; }
+  70%  { transform: translate(-15px, calc(var(--fall-distance) * 0.7)) rotate(300deg); opacity: .9; }
+  90%  { transform: translate(10px, calc(var(--fall-distance) * 0.9)) rotate(380deg); opacity: .9; }
+  100% { transform: translate(0, var(--fall-distance)) rotate(420deg); opacity: .8; }
+}
+
+/* Footer */
+footer{ position: relative; z-index: 25; background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:center; padding:2.5rem 2rem; font-size:.73rem; letter-spacing:.04em; margin-top: 4rem; }
+.fn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cr);margin-bottom:.35rem;}
+
+@media(max-width:700px){
+  .nav-brand{ display:none; }
+  nav{ padding:.7rem .5rem; justify-content: center; gap: 0.5rem; }
+  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
+  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
+  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
+  .voyage-text-box { padding: 1.5rem; }
+  .voyage-text-box p { font-size: 0.85rem; line-height: 1.6; }
+} 
+</style>
+</head>
+<body>
+
+<div id="pg-voyage">
+  <nav>
+    <div class="nav-brand">Mariana &amp; Robin</div>
+    <ul class="nav-links">
+      <li><a href="accueil.html">Accueil</a></li>
+      <li><a href="hebergement.html">Hébergement</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="voyage.html">Voyage de noces</a></li>
+    </ul>
+    <a class="btn-lang" href="../pt/voyage.html">🇧🇷 PT</a>
+  </nav>
+
+  <div class="inner-hero">
+    <img src="../ASSET/illustration_noces_FR.png" alt="Voyage de Noces">
+  </div>
+
+  <div class="voyage-inner">
+    <span class="ey">Notre aventure</span>
+    <h2 class="sec-h">Voyage de noces — Japon</h2>
+    <div class="rule"></div>
+    
+    <div class="voyage-text-box">
+      <p>Après notre mariage, nous partons pour le Japon — un rêve partagé depuis longtemps. Temples millénaires, jardins de cerisiers, cuisine raffinée… Des instants gravés pour toujours.</p>
+      <p>Si vous souhaitez contribuer à ce voyage de rêve, vous pouvez participer à notre cagnotte. Chaque geste nous touchera profondément 🌸</p>
+      <a href="#" class="btn-cag" onclick="alert('Lien cagnotte à ajouter !')">🌸 Contribuer à la cagnotte</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fn">Mariana &amp; Robin</div>
+    <p>Samedi 15 Mai 2027 · Domaine de Montmanoir, Montlignon</p>
+    <p style="margin-top:.4rem;opacity:.3;font-size:.66rem;">avec ♥</p>
+  </footer>
+</div>
+<script type="module" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs"></script>
+<script type="module">
+  var myLandbot = new Landbot.Livechat({
+    configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3424089-JQLVC7HWA1J3TR3H/index.json',
+  });
+</script>
+<script>
+    
+// Moteur de génération des pétales de cerisiers 🌸
+document.addEventListener("DOMContentLoaded", () => {
+  const voyageSection = document.getElementById("pg-voyage");
+  if (!voyageSection) return;
+
+  const MAX_GROUND_PETALS = 40;
+  let groundPetals = [];
+
+  function spawnPetal() {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML = "🌸"; 
+    
+    let currentLeft = Math.random() * 100;
+    petal.style.left = currentLeft + "%";
+    
+    const isForeground = Math.random() > 0.5;
+    petal.style.zIndex = isForeground ? "10" : "-1";
+    const size = isForeground ? (Math.random() * 0.7 + 0.8) : (Math.random() * 0.5 + 0.5);
+    petal.style.fontSize = size + "rem";
+    if (!isForeground) petal.style.filter = "blur(1.5px)";
+    
+    const randomBottomOffset = Math.random() * 20;
+    const fallDistance = voyageSection.offsetHeight + 40 - randomBottomOffset;
+    petal.style.setProperty("--fall-distance", fallDistance + "px");
+
+    const fallDuration = isForeground ? (Math.random() * 4 + 6) : (Math.random() * 5 + 8); 
+    petal.style.animationDuration = fallDuration + "s";
+    
+    // Effet d'esquive de la souris
+    petal.addEventListener("mouseover", () => {
+      currentLeft = currentLeft < 80 ? currentLeft + 10 : currentLeft - 10;
+      petal.style.left = currentLeft + "%";
+    });
+
+    voyageSection.appendChild(petal);
+
+    petal.addEventListener("animationend", () => {
+      groundPetals.push(petal);
+      if (groundPetals.length > MAX_GROUND_PETALS) {
+        const oldestPetal = groundPetals.shift();
+        oldestPetal.style.opacity = "0";
+        setTimeout(() => oldestPetal.remove(), 1500);
+      }
+    });
+  }
+
+  function loopSpawn() {
+    spawnPetal();
+    setTimeout(loopSpawn, Math.random() * 500 + 200);
+  }
+  
+  loopSpawn();
+});
+</script>
+</body>
+</html>
