@@ -171,32 +171,14 @@ footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:c
 <script>
 // Fonction GPS qui calcule la route en direct vers le domaine
 function openMaps(){
-  var dest='Domaine+de+Montmanoir+Montlignon+95680';
+  // Adresse exacte du Domaine de Montmanoir
+  var dest = 'Domaine+de+Montmanoir+Montlignon+95680';
   
-  if(!navigator.geolocation){
-    // Si la géolocalisation n'est pas supportée
-    window.open('https://www.google.com/maps/dir//'+dest,'_blank');
-    return;
-  }
+  // URL officielle de Google Maps universelle (Desktop + Mobile)
+  // En laissant l'origine vide, Google Maps demande lui-même le GPS de manière native
+  var url = 'https://www.google.com/maps/dir/?api=1&destination=' + dest;
   
-  // Demander la position avec un timeout
-  navigator.geolocation.getCurrentPosition(
-    function(position){
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      window.open('https://www.google.com/maps/dir/'+lat+','+lng+'/'+dest,'_blank');
-    },
-    function(error){
-      console.log('Erreur géolocalisation:', error.message);
-      // Si l'utilisateur refuse ou si ça échoue, ouvrir sans position
-      window.open('https://www.google.com/maps/dir//'+dest,'_blank');
-    },
-    {
-      timeout: 10000,
-      enableHighAccuracy: false,
-      maximumAge: 300000
-    }
-  );
+  window.open(url, '_blank');
 }
 
 </script>
