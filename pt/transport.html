@@ -13,13 +13,41 @@ img { max-width: 100%; height: auto; object-fit: contain; display: block; }
 body { font-family:'Jost',sans-serif; color:var(--dk); overflow-x:hidden; background-color: #f5ede3; }
 body::before { content:''; position:fixed; inset:0; z-index:-1; background-image: url("../ASSET/FOND SITE HTML.png"); background-repeat: repeat-y; background-size: 100% auto; background-position: top center; }
 
-nav{ position:fixed;top:0;left:0;right:0;z-index:500; padding:.8rem 2.4rem; display:flex;align-items:center;justify-content:space-between; background:rgba(245,237,227,.88); backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px); border-bottom:1px solid rgba(198,107,73,.12); }
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;}
-.nav-links{display:flex;gap:1.8rem;list-style:none;}
-.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;}
+/* ══════════════════════════════════
+   BARRE DE NAVIGATION UNIFIÉE
+══════════════════════════════════ */
+nav{ 
+  position:fixed;top:0;left:0;right:0;z-index:500; 
+  padding:.8rem 2.4rem; 
+  display:flex;align-items:center;justify-content:space-between; 
+  background:rgba(245,237,227,.88); 
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px); 
+  border-bottom:1px solid rgba(198,107,73,.12);
+  flex-wrap:nowrap;
+  gap:1rem;
+}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;white-space:nowrap;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;flex-shrink:1;}
+.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--tc);}
-.btn-lang{ background:none;border:1px solid rgba(198,107,73,.35);border-radius:30px; padding:.26rem .9rem;font-size:.68rem;letter-spacing:.1em; color:var(--md);cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s; text-decoration: none;}
+.btn-lang{ 
+  background:none;border:1px solid rgba(198,107,73,.35);border-radius:30px; 
+  padding:.26rem .9rem;font-size:.68rem;letter-spacing:.1em; 
+  color:var(--md);cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s; 
+  text-decoration: none;
+  flex-shrink:0;
+  white-space:nowrap;
+}
 .btn-lang:hover{background:var(--tc);color:white;border-color:var(--tc);}
+
+/* ── RESPONSIVE MOBILE NAV ── */
+@media(max-width:700px){
+  .nav-brand{ display:none; }
+  nav{ padding:.7rem .5rem; justify-content: center; gap: 0.5rem; }
+  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
+  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
+  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
+}
 
 .main-content { padding-top: 90px; min-height: 100vh; }
 .inner-hero{ display:flex; justify-content:center; padding:0 2rem; width:min(250px,40vw); margin:0 auto 1.5rem; }
@@ -36,15 +64,15 @@ nav{ position:fixed;top:0;left:0;right:0;z-index:500; padding:.8rem 2.4rem; disp
 .tr-ico{ font-size:1.7rem; margin-bottom:.6rem; }
 .tr-n { 
   font-family: 'Cormorant Garamond', serif; 
-  font-size: 1.35rem;        /* ← Augmenté (était à 1rem) pour s'aligner sur le design global */
-  font-weight: 600;          /* ← Ajout du gras pour faire ressortir le titre de la carte */
-  font-style: italic;        /* ← Ajout de l'italique élégant propre à ton identité visuelle */
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-style: italic;
   margin-bottom: .45rem; 
   color: var(--dk); 
 }
 
 .tr-d { 
-  font-size: 0.9rem;         /* ← Augmenté (était à 0.75rem) pour une lecture fluide et claire */
+  font-size: 0.9rem;
   color: var(--md); 
   line-height: 1.6; 
 }
@@ -56,13 +84,7 @@ footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:c
 .fn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cr);margin-bottom:.35rem;}
 
 @media(max-width:700px){
-  .nav-brand{ display:none; }
-  nav{ padding:.7rem .5rem; justify-content: center; gap: 0.5rem; }
-  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
-  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
-  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
   .trans-grid{ grid-template-columns:1fr; gap: 1rem; }
-  /* Ajustement de la taille des textes de transport sur mobile */
   .tr-n { font-size: 1.2rem; }
   .tr-d { font-size: 0.82rem; line-height: 1.4; }
 }
@@ -128,22 +150,45 @@ footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:c
   <p>Sábado 15 de Maio de 2027 · Domaine de Montmanoir, Montlignon</p>
   <p style="margin-top:.4rem;opacity:.3;font-size:.66rem;">com ♥</p>
 </footer>
+
 <script type="module" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs"></script>
 <script type="module">
   var myLandbot = new Landbot.Livechat({
     configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3424651-EHSQTFGAZJCVYO7L/index.json',
   });
 </script>
+
 <script>
+// Fonction GPS qui calcule la route en direct vers le domaine
 function openMaps(){
   var dest='Domaine+de+Montmanoir+Montlignon+95680';
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-      function(p){window.open('https://www.google.com/maps/dir/'+p.coords.latitude+','+p.coords.longitude+'/'+dest,'_blank');},
-      function(){window.open('https://www.google.com/maps/dir//'+dest,'_blank');}
-    );
-  }else window.open('https://www.google.com/maps/dir//'+dest,'_blank');
+  
+  if(!navigator.geolocation){
+    // Si la géolocalisation n'est pas supportée
+    window.open('https://www.google.com/maps/dir//'+dest,'_blank');
+    return;
+  }
+  
+  // Demander la position avec un timeout
+  navigator.geolocation.getCurrentPosition(
+    function(position){
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      window.open('https://www.google.com/maps/dir/'+lat+','+lng+'/'+dest,'_blank');
+    },
+    function(error){
+      console.log('Erreur géolocalisation:', error.message);
+      // Si l'utilisateur refuse ou si ça échoue, ouvrir sans position
+      window.open('https://www.google.com/maps/dir//'+dest,'_blank');
+    },
+    {
+      timeout: 10000,
+      enableHighAccuracy: false,
+      maximumAge: 300000
+    }
+  );
 }
 </script>
+
 </body>
 </html>
