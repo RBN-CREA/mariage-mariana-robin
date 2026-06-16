@@ -34,8 +34,20 @@ nav{ position:fixed;top:0;left:0;right:0;z-index:500; padding:.8rem 2.4rem; disp
 .trans{ background:rgba(255,255,255,.75); backdrop-filter:blur(8px); border-radius:12px; padding:1.3rem 1.1rem; border:1px solid rgba(164,195,210,.3); text-align:center; transition:transform .25s; width: 100%; max-width: 260px; }
 .trans:hover{ transform:translateY(-3px); }
 .tr-ico{ font-size:1.7rem; margin-bottom:.6rem; }
-.tr-n{ font-family:'Cormorant Garamond',serif; font-size:1rem; margin-bottom:.35rem; color:var(--dk); }
-.tr-d{ font-size:.75rem; color:var(--md); line-height:1.5; }
+.tr-n { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 1.35rem;        /* ← Augmenté (était à 1rem) pour s'aligner sur le design global */
+  font-weight: 600;          /* ← Ajout du gras pour faire ressortir le titre de la carte */
+  font-style: italic;        /* ← Ajout de l'italique élégant propre à ton identité visuelle */
+  margin-bottom: .45rem; 
+  color: var(--dk); 
+}
+
+.tr-d { 
+  font-size: 0.9rem;         /* ← Augmenté (était à 0.75rem) pour une lecture fluide et claire */
+  color: var(--md); 
+  line-height: 1.6; 
+}
 
 .btn-p{ display:inline-flex; align-items:center; gap:.5rem; background:var(--tc); color:white; border:none; border-radius:40px; padding:.75rem 1.7rem; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; font-family:'Jost',sans-serif; text-decoration:none; transition:background .2s,transform .2s; }
 .btn-p:hover{ background:#b05a3a; transform:translateY(-2px); }
@@ -50,6 +62,9 @@ footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:c
   .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
   .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
   .trans-grid{ grid-template-columns:1fr; gap: 1rem; }
+  /* Ajustement de la taille des textes de transport sur mobile */
+  .tr-n { font-size: 1.2rem; }
+  .tr-d { font-size: 0.82rem; line-height: 1.4; }
 }
 </style>
 </head>

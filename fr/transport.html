@@ -27,7 +27,9 @@ body::before {
   background-position: top center;
 }
 
-/* ── NAV ── */
+/* ══════════════════════════════════
+   BARRE DE NAVIGATION UNIFIÉE
+══════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   padding:.8rem 2.4rem;
@@ -35,17 +37,30 @@ nav{
   background:rgba(245,237,227,.88);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(198,107,73,.12);
+  flex-wrap:nowrap;
+  gap:1rem;
 }
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;}
-.nav-links{display:flex;gap:1.8rem;list-style:none;}
-.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tc);letter-spacing:.05em;white-space:nowrap;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;flex-shrink:1;}
+.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--md);text-decoration:none;transition:color .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--tc);}
 .btn-lang{
   background:none;border:1px solid rgba(198,107,73,.35);border-radius:30px;
   padding:.26rem .9rem;font-size:.68rem;letter-spacing:.1em;
   color:var(--md);cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s; text-decoration: none;
+  flex-shrink:0;
+  white-space:nowrap;
 }
 .btn-lang:hover{background:var(--tc);color:white;border-color:var(--tc);}
+
+/* ── RESPONSIVE MOBILE NAV ── */
+@media(max-width:700px){
+  .nav-brand { display: none; }
+  nav { padding: .7rem .5rem; justify-content: center; gap: 0.5rem; }
+  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
+  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
+  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
+}
 
 /* ── CONTENT ── */
 .main-content { padding-top: 90px; min-height: 100vh; }
@@ -69,24 +84,20 @@ nav{
 .btn-p{ display:inline-flex; align-items:center; gap:.5rem; background:var(--tc); color:white; border:none; border-radius:40px; padding:.75rem 1.7rem; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; font-family:'Jost',sans-serif; text-decoration:none; transition:background .2s,transform .2s; }
 .btn-p:hover{ background:#b05a3a; transform:translateY(-2px); }
 
+/* Espace autour du bouton pour éviter les superpositions */
+.btn-wrap {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
 /* Footer */
 footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:center; padding:2.5rem 2rem; font-size:.73rem; letter-spacing:.04em; margin-top: 4rem; }
 .fn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cr);margin-bottom:.35rem;}
 
 @media(max-width:700px){
-  .nav-brand{ display:none; }
-  nav{ padding:.7rem .5rem; justify-content: center; gap: 0.5rem; }
-  .nav-links { display: flex; gap: 0.6rem; list-style: none; }
-  .nav-links a { font-size: 0.52rem; letter-spacing: 0.05em; }
-  .btn-lang { padding: .2rem .5rem; font-size: .52rem; margin-left: .3rem; }
-  .voyage-text-box { padding: 1.5rem; }
-  .voyage-text-box p { font-size: 0.85rem; line-height: 1.6; }
-}
-
-/* Espace autour du bouton pour éviter les superpositions */
-.btn-wrap {
-  text-align: center;
-  margin-bottom: 2.5rem; /* ← Crée un espace de sécurité de sous le bouton pour pousser la grille */
+  .trans-grid{ grid-template-columns:1fr; gap: 1rem; }
+  .tr-n { font-size: 1.2rem; }
+  .tr-d { font-size: 0.82rem; line-height: 1.4; }
 }
 
 </style>
@@ -101,7 +112,6 @@ footer{ background:rgba(58,46,40,.92); color:rgba(245,237,227,.55); text-align:c
     <li><a href="transport.html">Transport</a></li>
     <li><a href="voyage.html">Voyage de noces</a></li>
   </ul>
-  <!-- Bouton pour basculer sur la future version portugaise de cette page -->
   <a class="btn-lang" href="../pt/transport.html">🇧🇷 PT</a>
 </nav>
 
