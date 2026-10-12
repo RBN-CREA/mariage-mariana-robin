@@ -436,6 +436,25 @@ nav.is-scrolled {
   transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
 }
 
+.tl-day {
+  text-align: center;
+  padding: 1.2rem 0 0.6rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+  width: 100%;
+}
+.tl-day.vis { opacity: 1; transform: translateY(0); }
+.tl-day span {
+  display: inline-block;
+  background: var(--cr);
+  padding: 0.3rem 1.1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--am);
+}
+
 .tl-row.vis .tl-d {
   transform: scale(1.15);
   box-shadow: 0 0 0 4px rgba(198, 107, 73, 0.12);
@@ -911,7 +930,7 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal, .reveal-scale, .tl-row, .lp-logo, .lp-choices {
+  .reveal, .reveal-scale, .tl-row, .tl-day, .lp-logo, .lp-choices {
     opacity: 1 !important;
     transform: none !important;
   }

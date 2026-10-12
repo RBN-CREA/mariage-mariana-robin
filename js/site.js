@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var WEDDING = new Date('2027-05-15T12:00:00');
+  var WEDDING = new Date('2027-05-15T14:30:00');
   var MAPS_DEST = 'Domaine+de+Montmanoir+Montlignon+95680';
   var prefersReduced =
     window.matchMedia &&
@@ -75,7 +75,7 @@
 
   /* ── Timeline + generic reveals ── */
   function initReveals() {
-    var nodes = document.querySelectorAll('.tl-row, .reveal, .reveal-scale');
+    var nodes = document.querySelectorAll('.tl-row, .tl-day, .reveal, .reveal-scale');
     if (!nodes.length) return;
 
     if (prefersReduced || !('IntersectionObserver' in window)) {
